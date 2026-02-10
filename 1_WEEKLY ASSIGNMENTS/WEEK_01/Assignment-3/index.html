@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3 </title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background: #ffffff;
+    }
+
+
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 100px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .sub-nav {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .logo {
+        display: flex;
+        font-weight: 700;
+        font-size: 20px;
+    }
+
+    .p1 {
+        color: black;
+    }
+
+    .p2 {
+        color: red;
+    }
+
+    .p3 {
+        color: black;
+    }
+
+    .sub-nav>p {
+        color: #111;
+        cursor: pointer;
+    }
+
+    .sub-nav>p:hover {
+        color: #333;
+    }
+
+    .search {
+        padding: 8px 12px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        outline: none;
+        width: 220px;
+    }
+
+    .profile {
+        width: 36px;
+        height: 36px;
+        background: #2b1a8f;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
+
+
+
+    .hero-section {
+
+        width: 100%;
+        padding: 80px 10px;
+        background-color: #fafafa;
+    }
+
+    .inner-hero {
+        margin-top: 20px;
+        width: 90%;
+        margin: auto;
+        padding: 30px;
+    }
+
+
+    .top-hero {
+        display: flex;
+        gap: 40px;
+        width: 100%;
+    }
+
+
+    .left,
+    .right {
+        flex: 1;
+    }
+
+
+    .left {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+
+    .top-call-to-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border: 1px dashed #cfd8dc;
+        border-radius: 999px;
+        align-self: flex-start;
+    }
+
+    .top-call-to-action p {
+        font-size: 14px;
+        color: #333;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        background-color: #0caf9f;
+        border-radius: 50%;
+    }
+
+
+    .center-hero {
+        max-width: 580px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+
+    .title {
+        font-size: 56px;
+        font-weight: 700;
+        color: #0b1c3d;
+        line-height: 1.1;
+    }
+
+
+    .p4 {
+        max-width: 520px;
+        line-height: 1.6;
+        color: #4a5568;
+    }
+
+    /* Buttons */
+    .hero-click {
+        display: flex;
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .hero-click button {
+        padding: 12px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    /* Button styles */
+    .learn-more {
+        padding: 5px;
+        background: white;
+        border: 1px solid #cfd8dc;
+    }
+
+    .hero-click button:last-child {
+        background: #0b1c3d;
+        color: white;
+        border: none;
+    }
+
+    /* Right image */
+    .right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .right img {
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+    }
+
+    /* Bottom bar */
+    .bottom {
+        width: 100%;
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bottom-top {
+        width: 100%;
+        background-color: #001959;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        padding: 40px;
+        border-radius: 0 150px 0 0;
+    }
+
+    .gsoc {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        gap: 20px;
+    }
+
+    .gsoc-logo {
+        padding: 7px;
+        background-color: #818acd;
+        border-radius: 0 7px 0 7px;
+    }
+
+    .gsoc-title {
+        margin-top: 2px;
+    }
+
+    .gsoc-title h3 {
+        font-size: 40px;
+        color: white;
+    }
+
+    .gsoc-title p {
+        font-size: 17px;
+        color: #667bad;
+    }
+
+    .divider {
+
+        height: 110px;
+        width: 2px;
+
+        background-color: white;
+    }
+
+    .bottom-down {
+        padding: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .bottom-down-left .bottom-down-right {
+        flex: 1;
+    }
+
+    .bottom-down-left {
+        background-color: #0fb8a0;
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+        border-radius: 24px;
+        overflow: hidden;
+        padding: 32px;
+    }
+
+    /* background image layer */
+    .bottom-down-left img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+
+    /* bring content above image */
+    .inside-title-div,
+    .inside-tag-div {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* TITLE AREA */
+    .inside-title-div h2 {
+        color: white;
+        font-size: 32px;
+        margin-bottom: 8px;
+    }
+
+    .inside-title-div p {
+        color: white;
+        margin-bottom: 24px;
+    }
+
+    /* TAG GRID */
+    .inside-tag-div {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 12px;
+        max-width: 700px;
+    }
+
+    /* EACH TAG */
+    .inside-tag {
+        background: white;
+        color: #0fb8a0;
+        padding: 6px;
+        border-radius: 100px;
+        text-align: center;
+    }
+
+    .inside-tag p {
+
+
+        font-size: 14px;
+    }
+
+    .bottom-down-right {
+        background-color: #001959;
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+        border-radius: 24px;
+        overflow: hidden;
+        padding: 32px;
+    }
+
+    .bottom-down-right img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+
+
+    @media (max-width: 900px) {
+        .navbar {
+            padding: 20px 40px;
+        }
+
+        .top-hero {
+            flex-direction: column;
+        }
+
+        .center-hero,
+        .p4 {
+            max-width: 100%;
+        }
+
+        .title {
+            font-size: 32px;
+        }
+
+        .hero-click {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<body>
+    <!-- navbar -->
+    <Nav class="navbar">
+        <div class="sub-nav">
+            <div class="logo">
+                <p class="p1">100</p>
+                <p class="p2">x</p>
+                <p class="p3">Dev</p>
+            </div>
+            <p>Home</p>
+            <p>Courses</p>
+            <p>Store</p>
+        </div>
+        <div class="sub-nav">
+
+            <input type="text" placeholder="Type to Search" id="search" class="search">
+            <div class="profile">
+                <p>S</p>
+            </div>
+        </div>
+
+    </Nav>
+    <!-- Hero Section  -->
+    <section class="hero-section">
+
+        <div class="inner-hero">
+            <!-- top -->
+            <div class="top-hero">
+                <!-- left -->
+                <div class="left">
+                    <div class="top-call-to-action">
+                        <div class="dot"></div>
+                        <p>Join 100,000+ enrolled students today</p>
+                    </div>
+                    <div class="center-hero">
+                        <p class="title">Master Full Stack</p>
+                        <p class="title">Development</p>
+                        <p class="p4">Master Full Stack Development through hands-on open source projects. Join a
+                            community
+                            of
+                            developers
+                            transforming their careers with practical, real-world programming skills.</p>
+                    </div>
+                    <div class="hero-click">
+                        <button class="learn-more">Learn More</button>
+                        <button class="explore">Explore Courses</button>
+
+                    </div>
+                </div>
+
+                <!-- right -->
+                <div class="right">
+                    <img src="./hero-img.webp" alt="">
+                </div>
+            </div>
+            <!-- bottom -->
+            <div class="bottom">
+                <div class="bottom-top">
+                    <div class="gsoc">
+                        <div class="gsoc-logo">
+                            <img src="./gsco.svg" alt="">
+                        </div>
+                        <div class="gsoc-title">
+                            <h3>27</h3>
+                            <p>Students cracked GSoC 2025</p>
+                        </div>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="gsoc">
+                        <div class="gsoc-logo">
+                            <img src="./package.svg" alt="">
+                        </div>
+                        <div class="gsoc-title">
+                            <h3>$150K</h3>
+                            <p>Highest International package</p>
+                        </div>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="gsoc">
+                        <div class="gsoc-logo">
+                            <img src="./interns.svg" alt="">
+                        </div>
+                        <div class="gsoc-title">
+                            <h3>200+</h3>
+                            <p>High paying internships confirmed</p>
+                        </div>
+                        <div class="divider"></div>
+                    </div>
+                    <!-- <div class="package"> </div>
+                    <div class="interns"> </div> -->
+                </div>
+                <div class="bottom-down">
+                    <div class="bottom-down-left">
+                        <img src="./background.svg" alt="">
+                        <div class="inside-title-div">
+                            <h2>Job ready skills that matter</h2>
+                            <p>Master development through real-world applications, not tutorials</p>
+                        </div>
+                        <div class="inside-tag-div">
+                            <div class="inside-tag">
+                                <p>Full Stack Development</p>
+                            </div>
+                            <div class="inside-tag">
+                                <p>Real-World Projects</p>
+                            </div>
+                            <div class="inside-tag">
+                                <p>Open Source Contributions</p>
+                            </div>
+                            <div class="inside-tag">
+                                <p>Production Ready</p>
+                            </div>
+                            <div class="inside-tag">
+                                <p>DevOps & Deployment</p>
+                            </div>
+                            <div class="inside-tag">
+                                <p>Job Ready Portfolio</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="bottom-down-right">
+
+                    </div> -->
+                    <!-- 
+                     -->
+                    <div class="bottom-down-right">
+                        <img src="./background.svg" alt="">
+                        <div class="inside-title-div">
+                            <h2>Personally mentoring India's next 100x engineers</h2>
+                            <p>Personally mentoring India's next 100x engineers
+                                Taking you from 1x to 100x through practical projects and real-world open source</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>
