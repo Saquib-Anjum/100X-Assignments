@@ -9,7 +9,30 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-    return [];
+  const totals = {};
+
+  for (const item of transactions) {
+    const currCategory = item.category;
+
+    if (totals[currCategory]) {
+      // 2. Add the price to the existing total
+      totals[currCategory].price += item.price;
+    } else {
+      // 3. Create the initial entry
+      totals[currCategory] = { price: item.price };
+    }
+  }
+
+  // 4. Map it to your final desired format
+  const result = Object.entries(totals).map(([key, value]) => {
+    return {
+      category: key,
+      totalSpent: value.price,
+    };
+  });
+
+  console.log(result);
+  return result; // Good practice to return the value
 }
 
 module.exports = calculateTotalSpentByCategory;
