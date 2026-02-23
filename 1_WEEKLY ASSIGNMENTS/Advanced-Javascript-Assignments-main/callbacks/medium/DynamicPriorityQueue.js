@@ -32,19 +32,26 @@ class DynamicPriorityQueue {
   }
 
   runNext() {
-    const { task, onComplete } = this.queue.shift();
-    this.active++;
+    if (this.active >= this.limit) return;
+    if (this.queue.length === 0) return;
+    while (this.active < this.limit && this.queue.length > 0) {
+      const item = this.queue.shift();
+      if (!item) return;
 
-    task((err, result) => {
-      this.active--;
+      const { task, onComplete } = item;
+      this.active++;
 
-      if (typeof onComplete === "function") {
-        onComplete(err, result);
-      }
+      task((err, result) => {
+        this.active--;
 
-      // Start next tasks automatically
-      this.runNext();
-    });
+        if (typeof onComplete === "function") {
+          onComplete(err, result);
+        }
+
+        // Start next queued task
+        this.runNext();
+      });
+    }
   }
 }
 
