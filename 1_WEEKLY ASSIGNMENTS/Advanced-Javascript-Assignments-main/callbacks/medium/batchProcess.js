@@ -12,6 +12,52 @@
 // - Start new work as soon as one finishes.
 // - Stop and return an error if any task fails.
 
-function batchProcess(items, limit, worker, onComplete) {}
+// ---------------- npm run batchProcess   -------------------------------------
+function batchProcess(items, limit, worker, onComplete) {
+  const results = new Array(items.length);
+  let inProgress = 0;
+  let index = 0;
+  let completed = 0;
+  let hasError = false;
+
+  function launchNext() {
+    // Stop if Error
+    if (hasError) return;
+
+    // All items processed
+    if (completed === items.length) {
+      return onComplete(null, results);
+    }
+
+    // Start tasks while slots available
+    while (inProgress < limit && index < items.length) {
+      const currentIndex = index++;
+      inProgress++;
+
+      worker(items[currentIndex], (err, data) => {
+        inProgress--;
+
+        if (hasError) return;
+
+        if (err) {
+          hasError = true;
+          return onComplete(err);
+        }
+
+        results[currentIndex] = data;
+        completed++;
+
+        launchNext(); // Start next task immediately
+      });
+    }
+  }
+
+  // Edge case: empty list
+  if (items.length === 0) {
+    return onComplete(null, []);
+  }
+
+  launchNext();
+}
 
 module.exports = batchProcess;

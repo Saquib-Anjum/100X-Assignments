@@ -7,13 +7,34 @@
 // As tasks complete, queued tasks should start automatically.
 // Each task must invoke its callback with its result when finished.
 
-
+//------------------------------- npm run CallbackPool  ----------------------------
 class CallbackPool {
-  constructor(limit) {}
+  constructor(limit) {
+    this.limit = limit;
+    this.active = 0; // running tasks
+    this.queue = []; // waiting tasks
+  }
 
-  run(task, onComplete) {}
+  run(task, onComplete) {
+    this.queue.push({ task, onComplete });
+    this._next();
+  }
 
-  _next() {}
+  _next() {
+    // look at slot
+    while (this.active < this.limit && this.queue.length > 0) {
+      const { task, onComplete } = this.queue.shift();
+      this.active++;
+      task((err, result) => {
+        this.active--;
+        //now call
+        if (typeof onComplete === "function") {
+          onComplete(err, result);
+        }
+        this._next();
+      });
+    }
+  }
 }
 
 module.exports = CallbackPool;
