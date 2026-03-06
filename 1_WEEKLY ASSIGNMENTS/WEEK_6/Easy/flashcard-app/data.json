@@ -1,0 +1,27 @@
+{
+  "JavaScript": [
+    {
+      "question": "What is DOM?",
+      "answer": "Document Object Model"
+    },
+    {
+      "question": "What is closure?",
+      "answer": "A function with access to its outer scope"
+    }
+  ],
+
+  "HTML": [
+    {
+      "question": "What does HTML stand for?",
+      "answer": "HyperText Markup Language"
+    },
+    {
+      "question": "Tag for image?",
+      "answer": "img"
+    },
+    {
+      "question": "Tag for image?",
+      "answer": ""
+    }
+  ]
+}

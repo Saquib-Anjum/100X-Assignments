@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "todo": "abc",
+    "done": false
+  },
+  {
+    "id": 3,
+    "todo": "read atomic habits",
+    "done": false
+  },
+  {
+    "id": 4,
+    "todo": "attend softwate development class",
+    "done": false
+  },
+  {
+    "id": 5,
+    "todo": "read atomic habits",
+    "done": false
+  },
+  {
+    "id": 6,
+    "todo": "attend softwate development class",
+    "done": false
+  }
+]

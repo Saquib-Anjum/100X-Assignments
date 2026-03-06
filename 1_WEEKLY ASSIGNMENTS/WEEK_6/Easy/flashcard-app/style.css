@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+body {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 60px;
+}
+
+.main {
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: white;
+}
+
+select {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  border: none;
+}
+
+/* Cards container */
+.flashCard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* Card style */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  min-height: 150px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.answer {
+  margin-top: 10px;
+  color: #555;
+  display: none;
+}
