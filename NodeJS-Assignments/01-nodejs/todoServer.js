@@ -54,9 +54,7 @@ app.use(bodyParser.json());
   
   */
 app.get("/todos", (req, res) => {
-  res.status(200).json({
-    todos,
-  });
+  res.status(200).json(todos);
 });
 //This is api for get todos with id
 /*
@@ -77,9 +75,7 @@ app.get("/todos/:id", (req, res) => {
       message: "TODO Not Found",
     });
   }
-  res.status(200).json({
-    todo,
-  });
+  res.status(200).json(todo);
 });
 // this is api for add  new todo in todos array
 /**
@@ -104,7 +100,7 @@ app.post("/todos", (req, res) => {
   };
   //now push each todo in todos array
   todos.push(todo);
-  res.status(201).json({ todos });
+  res.status(201).json({ id: todo.id });
 });
 //
 /*
@@ -150,10 +146,18 @@ app.delete("/todos/:id", (req, res) => {
       message: "todo not found",
     });
   }
+  todos = todos.filter((item) => item.id != id);
+  res.status(200).json(todos);
 });
-
+app.use((req, res) => {
+  res.status(404).json({
+    message: "Route not found",
+  });
+});
 const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`server is running on port ${PORT} || http:localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`server is running on port ${PORT} || http:localhost:${PORT}`);
+  });
+}
 module.exports = app;
