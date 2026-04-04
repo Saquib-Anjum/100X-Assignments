@@ -5,7 +5,9 @@ const app = express();
 
 function logRequests(req, res, next) {
   // write the logic for request log here
-  console.log(req);
+  const log = `${req.method} ${req.url} - ${new Date().toISOString()}`;
+  console.log(log);
+  next(); // Pass to the next middleware or route handler
 }
 
 app.use(logRequests);
